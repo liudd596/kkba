@@ -1,9 +1,14 @@
 <template>
   <div id="app">
     <h1>{{title1}}</h1>
+    <div>
+      <div><span>课程名称</span><input type="text" v-model="courseInfo.name"></div>
+      <div><span>课程价格</span><input type="text" v-model="courseInfo.price"></div>
+      <div><input type="button" value="添加课程到列表" v-on:click="addcourseTolist"></div>
+    </div>
     <hr>
     <div>
-      <h2>{{title2}}</h2>
+      <h2>添加课程</h2>
       <table>
         <tr>
           <th>课程名称</th>
@@ -14,7 +19,7 @@
           <td>{{item.price}}</td>
         </tr>
       </table>
-      <h2>{{title5}}</h2>
+      <h2>购物车</h2>
     </div>
     
   </div>
@@ -26,20 +31,27 @@ export default {
   data () {
     return {
       title1: '购物车',
-      title2: '添加课程',
-      title5: '购物车',
+      courseInfo: {
+        name : '',
+        price : ''
+      },
       courseList: [
         {
           id: 0,
-          courseName: 'web全栈开发架构师',
-          coursePrice: 888
+          name: 'web全栈开发架构师',
+          price: 888
         },
         {
           id: 1,
-          courseName: 'Python人工智能',
-          coursePrice: 999
+          name: 'Python人工智能',
+          price: 999
         }
       ]
+    }
+  },
+  methods:{
+    addcourseTolist () {
+       this.courseList.push(this.courseInfo)
     }
   }
 }
