@@ -13,24 +13,50 @@
         <tr>
           <th>课程名称</th>
           <th>课程价格</th>
+          <th>操    作</th>
         </tr>
         <tr v-for="(item,index) in courseList" :key='item.id'>
           <td>{{item.name}}</td>
           <td>{{item.price}}</td>
+          <th><button @click="addCourseToCare(index)">添加到购物车</button></th>
         </tr>
       </table>
-      <h2>购物车</h2>
+      <cart></cart>
+      <hr>
+      <div>{{ msg.split('').reverse().join('') }}</div>
+      <div v-html="hello"></div>
+      <a :href="url">{{url_name}}</a>
+      <div :class="cla">sds </div>
+      <div v-if="flag">孙悟空</div>
+      <div v-else>tongbu</div>
+      <div v-show="Apple">{{msg}}</div>
+      <div v-for="(list,index) in courseList" :key="index">
+
+        <div>{{list.name}}&nbsp;&nbsp;&nbsp;{{list.price}}&nbsp;&nbsp;&nbsp;{{list.id}}</div>
+       
+      </div>
+      <button @click="liuddss">liudd</button>
+      <br>
+      {{msg}}
     </div>
-    
   </div>
 </template>
 
 <script>
+import cart from './components/cart';
 export default {
   name: 'app',
   data () {
     return {
       title1: '购物车',
+      msg: '香蕉banner',
+      url_name: '百度',
+      url: "http://www.baidu.com",
+      cla: "sss",
+      flag: false,
+      Apple: true,
+      // 解析HTML结构
+      hello: '<h3>liudd</h3>',
       courseInfo: {
         name : '',
         price : ''
@@ -52,7 +78,16 @@ export default {
   methods:{
     addcourseTolist () {
        this.courseList.push(this.courseInfo)
+    },
+    addCourseToCare () {
+
+    },
+    liuddss () {
+     // this.courseList.push({ message: 'Baz' })
     }
+  },
+  components: {
+    cart
   }
 }
 </script>
